@@ -12,7 +12,7 @@ const getSongsByArtist = () => {
   const caseFormattedSearch = searchedArtist.charAt(0).toUpperCase() + searchedArtist.slice(1)
 
   // Open a new connection, using the GET request on the URL endpoint
-  request.open('GET', 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=' + caseFormattedSearch + '&api_key=PASTE_API_KEY_HERE&format=json', true);
+  request.open('GET', 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=' + caseFormattedSearch + '&api_key=01d67fa8b4f33dce213f0c366ed33511&format=json', true);
   
 
   request.onload = function () {
@@ -29,6 +29,9 @@ const getSongsByArtist = () => {
       // Create artist text and append to div
       const text = document.createTextNode(caseFormattedSearch + ' - ' + currTrack.name + ' | Playcount: ' + currTrack.playcount) 
       node.appendChild(text)
+      var addBtn = document.createElement("button")
+      addBtn.innerText = 'Add Song'
+      node.appendChild(addBtn)
       document.getElementById("trackList").appendChild(node)
     })
   }
